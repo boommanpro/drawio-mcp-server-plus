@@ -106,6 +106,7 @@ function App() {
             <li>Delete cell</li>
             <li>Get shape categories</li>
             <li>Add specific shape</li>
+            <li>Import XML diagram</li>
           </ul>
         )}
       </div>

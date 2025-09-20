@@ -741,3 +741,55 @@ export function get_cell_tags(graph: any, cell: any): string[] {
     return [];
   }
 }
+
+/**
+ * Imports a Draw.io diagram from XML format
+ * @param ui The draw.io UI instance
+ * @param options The options containing the XML content
+ * @returns true if successful, false otherwise
+ */
+export function import_xml(ui: any, options: DrawioCellOptions): boolean {
+  try {
+    const { editor } = ui;
+    const { graph } = editor;
+    const xml_content = options.xml as string;
+    
+    console.debug("[import_xml] Starting XML import process");
+    
+    if (!xml_content) {
+      console.error("[import_xml] No XML content provided");
+      return false;
+    }
+    
+    console.debug("[import_xml] XML content length:", xml_content.length);
+    
+    // Use mxUtils to parse the XML and mxCodec to decode it
+    const doc = mxUtils.parseXml(xml_content);
+    const codec = new mxCodec(doc);
+    const model = graph.getModel();
+    
+    // Begin model update
+    model.beginUpdate();
+    try {
+      // Clear the existing model
+      model.clear();
+      
+      // Decode the XML into the model
+      codec.decode(doc.documentElement, model);
+      
+      console.log("[import_xml] Successfully imported XML content");
+      return true;
+    } finally {
+      // End model update
+      model.endUpdate();
+      
+      // Refresh the graph display
+      graph.refresh();
+      graph.view.refresh();
+      graph.fit();
+    }
+  } catch (error) {
+    console.error("[import_xml] Error importing XML:", error);
+    return false;
+  }
+}

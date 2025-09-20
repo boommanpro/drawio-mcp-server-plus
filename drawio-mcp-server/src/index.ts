@@ -368,6 +368,18 @@ server.tool(
   default_tool(TOOL_list_paged_model, context),
 );
 
+const TOOL_import_xml = "import-xml";
+server.tool(
+  TOOL_import_xml,
+  "Imports a Draw.io diagram from XML format, replacing the current diagram content.",
+  {
+    xml: z
+      .string()
+      .describe("The complete Draw.io XML content to import and render"),
+  },
+  default_tool(TOOL_import_xml, context),
+);
+
 async function main() {
   log.debug("Draw.io MCP Server starting");
   await start_websocket_server();

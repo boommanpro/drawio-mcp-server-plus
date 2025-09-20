@@ -7,6 +7,7 @@ import {
   get_shape_categories,
   get_shapes_in_category,
   list_paged_model,
+  import_xml,
 } from "@/drawio";
 import { on_standard_tool_request_from_server } from "../bus";
 import { DrawioUI } from "../types";
@@ -99,6 +100,14 @@ export default defineUnlistedScript(() => {
           ui,
           new Set(["page", "page_size", "filter"]),
           list_paged_model,
+        );
+
+        const TOOL_import_xml = "import-xml";
+        on_standard_tool_request_from_server(
+          TOOL_import_xml,
+          ui,
+          new Set(["xml"]),
+          import_xml,
         );
       });
     } else {
