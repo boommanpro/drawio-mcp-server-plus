@@ -9,7 +9,7 @@ export default defineConfig({
       {
         resources: ["main_world.js"],
         // matches: ["*://*/*"],
-        matches: ["*://app.diagrams.net/*"],
+        matches: ["*://app.diagrams.net/*", "*://www.baidu.com/*"],
       },
     ],
   },
