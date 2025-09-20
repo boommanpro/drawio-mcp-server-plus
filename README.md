@@ -31,6 +31,8 @@ Draw.io MCP Server Plus 是一个 [Model Context Protocol (MCP)](https://modelco
 - 支持导入完整的 Draw.io XML 文件
 - 能够处理复杂图表结构和自定义样式
 - 保持图表的所有原始属性和关系
+![trae](https://github.com/boommanpro/drawio-mcp-server-plus/blob/main/docs/image/img.png?raw=true)
+![demo](https://github.com/boommanpro/drawio-mcp-server-plus/blob/main/docs/image/img_1.png?raw=true)
 
 ### 🧩 统一代码库
 - 合并了 server 和 extension 两个项目
